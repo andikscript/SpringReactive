@@ -3,6 +3,7 @@ package com.andikscript.springreactive.controller;
 import com.andikscript.springreactive.model.Employee;
 import com.andikscript.springreactive.service.employee.EmployeeService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -25,6 +26,7 @@ public class EmployeeController {
                 .body(employeeService.save(employee));
     }
 
+//    @GetMapping(value = "/all", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @GetMapping(value = "/all")
     public ResponseEntity<Flux<Employee>> findAll() {
         return ResponseEntity.status(HttpStatus.OK)
