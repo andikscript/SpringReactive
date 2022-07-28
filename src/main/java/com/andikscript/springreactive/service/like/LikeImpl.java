@@ -1,4 +1,4 @@
-package com.andikscript.springreactive.service.employee;
+package com.andikscript.springreactive.service.like;
 
 import com.andikscript.springreactive.model.Like;
 import com.andikscript.springreactive.repository.LikeRepository;
