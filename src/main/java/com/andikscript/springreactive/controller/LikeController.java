@@ -1,9 +1,8 @@
 package com.andikscript.springreactive.controller;
 
-import com.andikscript.springreactive.model.Employee;
-import com.andikscript.springreactive.service.employee.EmployeeService;
+import com.andikscript.springreactive.model.Like;
+import com.andikscript.springreactive.service.employee.LikeService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -11,37 +10,37 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping(value = "/api/employee")
-public class EmployeeController {
+public class LikeController {
 
-    private final EmployeeService employeeService;
+    private final LikeService likeService;
 
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public LikeController(LikeService likeService) {
+        this.likeService = likeService;
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity<?> createEmployee(@RequestBody Employee employee) {
+    public ResponseEntity<?> createEmployee(@RequestBody Like like) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(employeeService.save(employee));
+                .body(likeService.save(like));
     }
 
 //    @GetMapping(value = "/all", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @GetMapping(value = "/all")
-    public ResponseEntity<Flux<Employee>> findAll() {
+    public ResponseEntity<Flux<Like>> findAll() {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(employeeService.findAll());
+                .body(likeService.findAll());
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Mono<Employee>> findById(@PathVariable(value = "id") String id) {
+    public ResponseEntity<Mono<Like>> findById(@PathVariable(value = "id") String id) {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(employeeService.findById(id));
+                .body(likeService.findById(id));
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteById(@PathVariable(value = "id") String id) {
-        employeeService.deleteById(id);
+        likeService.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK)
                 .body("Delete success");
     }

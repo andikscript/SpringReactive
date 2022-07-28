@@ -3,8 +3,8 @@ package com.andikscript.springreactive.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "employee")
-public class Employee {
+@Document(collection = "like")
+public class Like {
 
     @Id
     private String id;
