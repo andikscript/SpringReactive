@@ -29,4 +29,9 @@ public class EmployeeImpl implements EmployeeService {
     public Mono<Employee> findById(String id) {
         return employeeRepository.findById(id);
     }
+
+    @Override
+    public void deleteById(String id) {
+        employeeRepository.deleteById(id);
+    }
 }

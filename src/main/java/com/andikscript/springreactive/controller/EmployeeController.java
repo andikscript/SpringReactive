@@ -20,7 +20,7 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity<Mono<Employee>> createEmployee(@RequestBody Employee employee) {
+    public ResponseEntity<?> createEmployee(@RequestBody Employee employee) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(employeeService.save(employee));
@@ -37,5 +37,12 @@ public class EmployeeController {
     public ResponseEntity<Mono<Employee>> findById(@PathVariable(value = "id") String id) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(employeeService.findById(id));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable(value = "id") String id) {
+        employeeService.deleteById(id);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body("Delete success");
     }
 }
