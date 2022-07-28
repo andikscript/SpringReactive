@@ -32,4 +32,10 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(employeeService.findAll());
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Mono<Employee>> findById(@PathVariable(value = "id") String id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(employeeService.findById(id));
+    }
 }

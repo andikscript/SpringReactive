@@ -24,4 +24,9 @@ public class EmployeeImpl implements EmployeeService {
     public Mono<Employee> save(Employee employee) {
         return employeeRepository.save(employee);
     }
+
+    @Override
+    public Mono<Employee> findById(String id) {
+        return employeeRepository.findById(id);
+    }
 }

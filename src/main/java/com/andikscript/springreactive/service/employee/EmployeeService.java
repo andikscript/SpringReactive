@@ -9,4 +9,6 @@ public interface EmployeeService {
     Flux<Employee> findAll();
 
     Mono<Employee> save(Employee employee);
+
+    Mono<Employee> findById(String id);
 }
