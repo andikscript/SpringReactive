@@ -11,7 +11,7 @@ public class Employee {
 
     private String name;
 
-    private String salary;
+    private Integer salary;
 
     public String getId() {
         return id;
@@ -29,11 +29,11 @@ public class Employee {
         this.name = name;
     }
 
-    public String getSalary() {
+    public Integer getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(Integer salary) {
         this.salary = salary;
     }
 }
