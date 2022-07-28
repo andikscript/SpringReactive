@@ -2,10 +2,11 @@ package com.andikscript.springreactive.service.employee;
 
 import com.andikscript.springreactive.model.Employee;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface EmployeeService {
 
     Flux<Employee> findAll();
 
-    void save(Employee employee);
+    Mono<Employee> save(Employee employee);
 }
