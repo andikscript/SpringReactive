@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping(value = "/api/employee")
@@ -18,11 +19,10 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity<?> createEmployee(@RequestBody Employee employee) {
-        employeeService.save(employee);
+    public ResponseEntity<Mono<Employee>> createEmployee(@RequestBody Employee employee) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body("Success create");
+                .body(employeeService.save(employee));
     }
 
     @GetMapping(value = "/all")
