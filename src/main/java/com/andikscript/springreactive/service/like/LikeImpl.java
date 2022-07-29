@@ -31,7 +31,7 @@ public class LikeImpl implements LikeService {
     }
 
     @Override
-    public void deleteById(String id) {
-        likeRepository.deleteById(id).subscribe();
+    public Mono<Void> deleteById(String id) {
+        return likeRepository.deleteById(id);
     }
 }

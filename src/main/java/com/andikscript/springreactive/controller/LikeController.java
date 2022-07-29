@@ -39,9 +39,8 @@ public class LikeController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable(value = "id") String id) {
-        likeService.deleteById(id);
+    public ResponseEntity<Mono<Void>> deleteById(@PathVariable(value = "id") String id) {
         return ResponseEntity.status(HttpStatus.OK)
-                .body("Delete success");
+                .body(likeService.deleteById(id));
     }
 }

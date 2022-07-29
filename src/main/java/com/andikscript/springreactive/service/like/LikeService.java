@@ -12,7 +12,7 @@ public interface LikeService {
 
     Mono<Like> findById(String id);
 
-    void deleteById(String id);
+    Mono<Void> deleteById(String id);
 
     // Flux<> digunakan untuk menghandle object yang banyak
     // Mono<> digunakan untuk menghandle satu object
